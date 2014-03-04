@@ -1,0 +1,12 @@
+#### my .gitignore ######
+*.[oa]
+*~
+# ignore all files in the tmp/ directory
+tmp/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
