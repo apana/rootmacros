@@ -1,0 +1,26 @@
+##This is the file .rootrc
+##The description of possible variables in .rootrc is given in TEnv.
+
+# Path used by dynamic loader to find shared libraries
+#*.Root.DynamicPath:    .:~/rootmacros:$ROOTDIR/lib
+#Unix.*.Root.MacroPath:      .:$(ROOTSYS)/macros:$HOME/rootmacros
+#Unix.*.Root.DynamicPath:    .:$(HOME)/rootmacros:$(ROOTSYS)/lib
+
+*.Root.DynamicPath:    .:$ROOTDIR/lib
+Unix.*.Root.MacroPath:      .:$(ROOTSYS)/macros
+Unix.*.Root.DynamicPath:    .:$(ROOTSYS)/lib
+Unix.*.Root.UseTTFonts:
+
+# Activate memory statistics
+Rint.Root.MemStat:       1
+Rint.Load:               $(HOME)/rootmacros/.rootalias.C
+Rint.Logon:              $(HOME)/rootmacros/.rootlogon.C
+Rint.Logoff:             rootlogoff.C
+
+Rint.Canvas.MoveOpaque:  false
+Rint.Canvas.HighLightColor: 5
+
+# ACLiC customization.
+# ACLiC.IncludePaths:     -I$(HOME)/rootmacros
+
+Browser.Name:            TRootBrowserLite
