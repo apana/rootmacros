@@ -8,7 +8,7 @@
 
 
    Int_t ivers=gROOT->GetVersionInt();
-   cout << " Version: " << ivers << endl;
+   cout << " Version: " << ivers << "\n\n";
 
    
    Int_t kDarkGreen=kGreen+3;
