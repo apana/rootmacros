@@ -5,13 +5,17 @@
 ###########################################
 import ROOT
 
-def SetStyle():
+def SetStyle(styleName="MyStyle"):
 
+    ## MyStyle or tdrStyle
     from ROOT import gROOT, gStyle
 
     gROOT.Reset()
+    gROOT.ProcessLine(".x ~/rootmacros/myStyle.cc")
+    gROOT.ProcessLine(".x ~/rootmacros/setTDRStyle.C");
     # gROOT.SetStyle("tdrStyle");    
-    gROOT.SetStyle("MyStyle");    
+    # gROOT.SetStyle("MyStyle");  
+    gROOT.SetStyle(styleName);  
     gStyle.SetOptLogy(0);
     gStyle.SetPalette(1);
     gStyle.SetOptTitle(0);
