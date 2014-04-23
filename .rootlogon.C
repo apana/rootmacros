@@ -25,4 +25,6 @@
    // cout << HomeDir << endl;
    gROOT->ProcessLine(".include " + MyIncludePath);
 
+   // may cause compilation problems
+   cmsload();
 }
