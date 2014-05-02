@@ -1,0 +1,496 @@
+
+
+
+     FFFFLLLLPPPPRRRR((((1111))))               UUUUNNNNIIIIXXXX SSSSyyyysssstttteeeemmmm VVVV ((((FFFFeeeerrrrmmmmiiii))))               FFFFLLLLPPPPRRRR((((1111))))
+
+
+
+     NNNNAAAAMMMMEEEE
+          flpr, flpq, flpk - Fermilab version of lpr/lpd programs
+
+     SSSSYYYYNNNNOOOOPPPPSSSSIIIISSSS
+          ffffllllpppprrrr [[[[[[[[----hhhh_h_o_s_t]]]] [[[[----qqqq_q_u_e_u_e]]]]||||[[[[----PPPP_p_r_i_n_t_e_r]]]]]]]] [[[[----llll_l_o_g_i_n]]]]
+          [[[[----IIII_i_d_e_n_t_i_f_i_e_r]]]] [[[[----jjjj_j_o_b_n_a_m_e]]]] [[[[----cccc_c_l_a_s_s_n_a_m_e]]]] [[[[----uuuu_f_u_l_l_n_a_m_e]]]]
+          [[[[----iiii_i_n_d_e_n_t]]]] [[[[----wwww_w_i_d_t_h]]]] [[[[----nnnn_n_o_t_i_f_y]]]] [[[[-_C]]]] [[[[-_V[_V]]]]] [[[[-_v]]]] [[[[-?]]]]
+          [[[[-_E[_E]]]]] [[[[-_S]]]] [[[[-_T]]]] [[[[-_Q]]]] [[[[-@_p_a_t_t_e_r_n]]]] [[[[-_W[_W]]]]] [[[[-_m]]]] [[[[_f_i_l_e]]]] ............
+
+          ffffllllppppqqqq [[[[[[[[----hhhh_h_o_s_t]]]] [[[[----qqqq_q_u_e_u_e]]]]||||[[[[----PPPP_p_r_i_n_t_e_r]]]]]]]] [[[[----ssss]]]] [[[[-_C]]]] [[[[-_v]]]] [[[[-?]]]]
+          [[[[-_E[_E]]]]] [[[[_u_s_e_r_s||||_j_o_b_s]]]] [[[[-_m]]]] ............
+
+          ffffllllppppkkkk [[[[[[[[----hhhh_h_o_s_t]]]] [[[[----qqqq_q_u_e_u_e]]]]||||[[[[----PPPP_p_r_i_n_t_e_r]]]]]]]] [[[[----llll_l_o_g_i_n]]]] [[[[-_V[_V]]]]] [[[[-_v]]]]
+          [[[[-?]]]] [[[[-_E[_E]]]]] [[[[_u_s_e_r_s||||_j_o_b_s]]]] [[[[-_m]]]] ............
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN,,,, SSSSYYYYSSSSTTTTEEEEMMMM AAAADDDDMMMMIIIINNNNSSSSTTTTRRRRAAAATTTTIIIIOOOONNNN
+          The user level description is the next section.  But users
+          are welcome to read and understand this section.  The user
+          and the system adminstrator may be the same person.  Or, the
+          user may have to diagnose a situation and explain what needs
+          to be done to the system administrator.
+
+          Not all of the programs and not all of the parameters work
+          between any given pair of systems.
+
+          ffffllllpppprrrr, ffffllllppppqqqq and ffffllllppppkkkk are normally installed as a single with
+          three hard links.  Symbolic links may be substituted.  The
+          program determines its function by examining its basename
+          (the last component of the filename used to invoke it).  To
+          support alternate versions for debugging and so forth the
+          names can be prefixed by a single character except `~' or
+          `!'.  Since flpr may be linked to by printer nicknames to
+          establish that nickname as a default printer nickname, the
+          checking order is `flpr', printer nicknames and then single
+          character extended names.
+
+          ffffllllpppprrrr, ffffllllppppqqqq and ffffllllppppkkkk must be installed setuid root so that it
+          can obtain a connection using the BSD lpd privileged port.
+
+             Normal UNIX:   chown root.sys flpr
+                            chmod 4511 flpr
+
+             BSD/Linux:     chown root.sys flpr
+                            chmod u=rsx,g=x,o=x flpr
+
+          If you do not use the funky text form parameter string in
+          BSD or Linux, then the chmod command _s_i_l_e_n_t_l_y ignores the
+          setuid bit specification.  For some very old UNIX variants,
+          it may be necessary to use separate chgrp sys and chgrp root
+          commands.  In case of SunOS and a few other variants, group
+          sys may need to be replaced by group wheel or some other
+          group.
+
+
+     Page 1                                           (printed 2/8/99)
+
+
+
+     FFFFLLLLPPPPRRRR((((1111))))               UUUUNNNNIIIIXXXX SSSSyyyysssstttteeeemmmm VVVV ((((FFFFeeeerrrrmmmmiiii))))               FFFFLLLLPPPPRRRR((((1111))))
+
+
+
+     DDDDEEEESSSSCCCCRRRRIIIIPPPPTTTTIIIIOOOONNNN,,,, UUUUSSSSEEEERRRR LLLLEEEEVVVVEEEELLLL
+          Not all of the programs and not all of the parameters work
+          between any given pair of systems.
+
+          All three programs will display a description of their
+          arguments when given an argument of ----????. [For csh, ----\b\b\b???? is
+          required.]  Also, for each program as shown above, as
+          applicable:
+
+             ----mmmm   sends a man page for these programs to stdout.  The
+                  other options will not be processed if this option
+                  is used.
+
+             ----CCCC   displays the copyright notice that applies to both
+                  this documentation and these programs,
+
+             ----vvvv   displays the machine compiled on and the compilation
+                  date (ffffllllpppprrrr also prints host, queue, and login id
+                  data reflecting all sources of this data),
+
+             ----VVVV   displays the lpr protocol file to be used.  The
+                  double ----VVVVVVVV option adds a display of the protocol
+                  exchange with the remote llllppppdddd daemon.
+
+             ----EEEE   toggles the display of expanded error messages
+                  containing, for example, probable causes and
+                  suggested actions to correct.  The initial state
+                  gives long form messages for error conditions. The
+                  states after that alternate between short and long
+                  form messages for both error and warning conditions.
+
+             ----SSSS   requests the toggling of normal reports vs. error
+                  reporting only from flpr.
+
+             ----TTTT   changes the form of the temporary filenames used in
+                  the llllppppdddd protocol exchange to the form used in
+                  earlier versions of ffffllllpppprrrr.  The previous format was
+                  incompatible with SSSSUUUUNNNN llllppppdddd daemons; but allowed up to
+                  333 temporary files.  The present format is
+                  compatible with both SSSSUUUUNNNN llllppppdddd and TTTTGGGGVVVV (DDDDEEEECCCC VVVVAAAAXXXX
+                  resident) llllppppdddd daemons; but only allows up to 51
+                  temporary files.
+
+             ----hhhh   specifies the host machine name.
+
+             ----qqqq   specifies the print queue name on the host machine.
+
+             ----PPPP   specifies a printer nickname with associated host
+                  and queue names.
+
+             ----llll   specifies a user name on the host machine.
+
+
+
+     Page 2                                           (printed 2/8/99)
+
+
+
+     FFFFLLLLPPPPRRRR((((1111))))               UUUUNNNNIIIIXXXX SSSSyyyysssstttteeeemmmm VVVV ((((FFFFeeeerrrrmmmmiiii))))               FFFFLLLLPPPPRRRR((((1111))))
+
+
+
+             ----IIII   specified a format string describing an alternate
+                  jobname.  The string argument must contain only
+                  alphanumeric, underscores, hyphens, dollar signs, or
+                  data item identifiers.  Data item identifiers are %f
+                  for the full file name (*stdin for standard input),
+                  %b for the file basename (the portion after the last
+                  slash or the full filename, if there is no slash),
+                  %h for the name of the machine the request is ran
+                  on, or %l for the user name (either from input to
+                  flpr or the user's login name, as approppriate).
+
+             ----QQQQ   requests that ffffllllpppprrrr produce a listing of the defined
+                  printer nicknames and terminate.
+
+             ----WWWW[[[[WWWW]]]]
+                  requests that ffffllllpppprrrr produce a report of selected host
+                  name, printer queue name, username to be used on
+                  banner page (if any), and the user's home directory
+                  and terminate.  With a doubled W, i.e., -WW, the
+                  source of control data are also displayed.
+
+             ----@@@@   produces a selected list of printer nicknames in the
+                  same format as the ----QQQQ option and terminates.  It
+                  takes an argument of either a substring or a colon
+                  preceeded shell-style quoted regular expression.
+                  For example, -@ps lists printer nicknames with `ps'
+                  in the name.  -@:'b0*ps*' lists printer nicknames
+                  that start with `b0' and have `ps' somewhere
+                  following in the name.
+
+             ----ssss   produces the short form of the lpq report, if
+                  available from lpd server.
+
+          The documentation options suppress the normal operation of
+          these programs.
+
+          ffffllllpppprrrr the print program, can either print from stdin or from
+               a list of files, but not both stdin and a list of
+               files.  It uses disk space in /usr/tmp for temporary
+               storage of stdin data and for control files.  It
+               produces a report to stdout naming each file printed
+               (*stdin for standard input); the size of the file,
+               which may be in bytes (B), kilobytes (K), megabytes (M)
+               or gigabytes (G); if the source is a file, then the age
+               of the file based on when it was last written, which
+               may be in days, hours, minutes and seconds, if less
+               than a week from the present, date and time if less
+               than 180 days from the present and otherwise the date
+               and year; the print server's name and print queue name
+               and a final line indicating the completion of the
+               request with the print server's name again.  The print
+               server's IP address is included in the last line if
+
+
+     Page 3                                           (printed 2/8/99)
+
+
+
+     FFFFLLLLPPPPRRRR((((1111))))               UUUUNNNNIIIIXXXX SSSSyyyysssstttteeeemmmm VVVV ((((FFFFeeeerrrrmmmmiiii))))               FFFFLLLLPPPPRRRR((((1111))))
+
+
+
+               flpr was compiled with that support.
+
+          ffffllllppppqqqq the query program, has the capacity to request either a
+               long or short form output and select by users or jobs.
+               Some lpr daemons may not support these capacities.
+
+          ffffllllppppkkkk the print request cancel program, has the capacity to
+               request the cancellation of output optionally selected
+               by users or jobs names.  Some lpr daemons may not
+               support these capacities.
+
+          There are defaults file whose names can be determined by
+          executing ffffllllpppprrrr with the ----vvvv and ----\b\b\b???? options that can contain
+          default values for the host, username, printer queue,
+          protocol temporary filename format and one or more
+          associations between a `nickname' and a host and printer
+          queue pair.  These values are referenced first but if
+          environment variables or arguments are supplied, the values
+          in the defaults file are ignored. The effect of the system
+          defaults file is system wide.  The effect of the user's
+          defaults file is for that user only.
+
+          The name of the system-wide defaults file is determined when
+          the programs are compiled.  It is usually either
+          /itc/flp.defaults or /usr/local/etc/flp.defaults. The user's
+          defaults file is usually $HOME/.flprrc.
+
+          If the first non-whitespace character on a line is a non-
+          alphanumeric character, if the line is entirely whitespace
+          or has improper syntax, then it is functionally a comment
+          line.
+
+          The format of the defaults file is (one tag per line):
+          optional whitespace, a tag, whitespace, a value, optional
+          whitespace and the end of the line.  The format of the
+          defaults file nickname entries is (one entry per line):
+          optional whitespace, a tag, whitespace, a nickname,
+          whitespace, a host name, whitespace, a printer queue,
+          optional whitespace and the end of the line.
+
+          The tags are:
+
+             hhhhoooosssstttt - the computer system where the target lpd is,
+
+             qqqquuuueeeeuuuueeee
+                  - a default printer queue on the 'host' computer
+                  system,
+
+             pppprrrriiiinnnntttteeeerrrr
+                  - specifies a relationship between, respectively, a
+                  printer nickname, an associated host name and an
+                  associated queue name,
+
+
+     Page 4                                           (printed 2/8/99)
+
+
+
+     FFFFLLLLPPPPRRRR((((1111))))               UUUUNNNNIIIIXXXX SSSSyyyysssstttteeeemmmm VVVV ((((FFFFeeeerrrrmmmmiiii))))               FFFFLLLLPPPPRRRR((((1111))))
+
+
+
+             uuuusssseeeerrrr - a default login name on the 'host' computer
+                  system( this tag is only needed if the users login
+                  name on the host system is different from the users
+                  login on the system the user is currently logged
+                  into),
+
+             ffffuuuullllllllnnnnaaaammmmeeee
+                  - user's full name,
+
+             ffffiiiilllleeeessss
+                  - the protocol temporary filename format (0
+                  indicates TGV format, 1 indicates SUN format),
+
+             iiiiddddeeeennnnttttiiiiffffiiiieeeerrrr
+                  - a jobname format string equivalent to the -I
+                  option, and
+
+             EEEEffffllllaaaagggg
+                  - desired error message level:  0 for short messages
+                  only; 1 for complete long messages and -1 for long
+                  message without missing control files being
+                  commented upon (the default).
+
+             ssssiiiilllleeeennnncccceeee
+                  - desired normal reporting level 0 for normal
+                  reports; 1 for errors, warnings and debugging
+                  reports only. The default is normal reports.
+
+          The effect of environment variables are system-wide if
+          defined in ////eeeettttcccc////ccccsssshhhhrrrrcccc or ////eeeettttcccc////pppprrrrooooffffiiiilllleeee.  The effect can be
+          individualized for a specific user in their shell
+          initialization files or by interactive input.
+
+          The following environmental variables may be used:
+
+             FFFFLLLLPPPPHHHHOOOOSSSSTTTT
+                  - the computer system where the target lpd is,
+
+             FFFFLLLLPPPPQQQQUUUUEEEE
+                  - the printer queue on computer system where the
+                  target lpd is,
+
+             FFFFLLLLPPPPPPPPRRRRIIIINNNNTTTTEEEERRRR
+                  - the printer nickname that specifies the computer
+                  system where the target lpd is and the printer queue
+                  (if present FLPPRINTER overrides FLPHOST and
+                  FLPQUE),
+
+             FFFFLLLLPPPPUUUUSSSSEEEERRRR
+                  - a default login name on the 'host' computer
+                  system, this tag is only needed if the users login
+                  name on the host system is different from the users
+
+
+     Page 5                                           (printed 2/8/99)
+
+
+
+     FFFFLLLLPPPPRRRR((((1111))))               UUUUNNNNIIIIXXXX SSSSyyyysssstttteeeemmmm VVVV ((((FFFFeeeerrrrmmmmiiii))))               FFFFLLLLPPPPRRRR((((1111))))
+
+
+
+                  login on the system the user is currently logged
+                  into,
+
+             FFFFLLLLPPPPFFFFIIIILLLLEEEESSSS
+                  - protocol temporary filename format, values
+                  similiar to those for the defaults file ffffiiiilllleeeessss line.
+
+             FFFFLLLLPPPPIIIIDDDDEEEENNNNTTTT
+                  - a jobname format string equivalent the -I option.
+
+             FFFFLLLLPPPPNNNNAAAAMMMMEEEE
+                  - full name of user, should be shell quoted, if
+                  necessary.
+
+             FFFFLLLLPPPPEEEEFFFFLLLLAAAAGGGG
+                  - 0 for short messages only; 1 for complete long
+                  messages and 1 for long message without missing
+                  control files being commented upon (the default).
+
+             FFFFLLLLPPPPSSSSIIIILLLLEEEENNNNCCCCEEEE
+                  - desired normal reporting level 0 for normal
+                  reports; 1 for errors, warnings and debugging
+                  reports only. The default is normal reports.
+
+          Option value meanings are:
+
+             classname banner page line item
+
+             file      name of file to be printed
+
+             fullname  banner page line item, intended to be user's
+                       full name
+
+             host      name, IP numeric address or IP dotted numeric
+                       address of machine to receive material to be
+                       printed (numeric may be C decimal, octal or
+                       hexadecimal integers.)
+
+             indent    columns to indent printing
+
+             jobname   banner page line item
+
+             jobs      print jobs in queue
+
+             login     login name to attribute print request to
+
+             notify    login name to send mail to notify of completion
+
+             queue     print queue to assign material to
+
+             users     login name of attributed user concerned
+
+
+
+     Page 6                                           (printed 2/8/99)
+
+
+
+     FFFFLLLLPPPPRRRR((((1111))))               UUUUNNNNIIIIXXXX SSSSyyyysssstttteeeemmmm VVVV ((((FFFFeeeerrrrmmmmiiii))))               FFFFLLLLPPPPRRRR((((1111))))
+
+
+
+             width     column width of printing
+
+          A link made from ffffllllpppprrrr of either the hard or symbolic type to
+          a filename whose basename is a printer nickname supplies a
+          default nickname.  See `CCCCOOOONNNNTTTTRRRROOOOLLLL DDDDAAAATTTTAAAA PPPPRRRROOOOCCCCEEEESSSSSSSSIIIINNNNGGGG' near the
+          bottom of this document for a description of the priority of
+          the control data sources.
+
+          For example of the feature mentioned just above, assume that
+          you have a ~/._f_l_p_p_r_c which contains:
+
+                  host prtsrvr
+                  queue myprinter
+                  printer trans transsrvr trans_queue
+
+          Then, if you have a ~/_b_i_n in your shell PATH variable, then
+          you can do the following (the _r_e_h_a_s_h command is needed only
+          if you are using a C family shell and you want it to use the
+          link without resetting your shell PATH variable by `set
+          path=($path)' or logging out and back in):
+
+                  cd ~/bin
+                  ln -s /the/directory/where/is/flpr trans
+                  rehash
+                  trans myfile
+
+
+     CCCCOOOONNNNTTTTRRRROOOOLLLL DDDDAAAATTTTAAAA PPPPRRRROOOOCCCCEEEESSSSSSSSIIIINNNNGGGG
+          From highest to lowest, the priority of the data sources
+          are: program arguments, the base name of program as a link
+          to ffffiiiilllleeee, environment variables (which may come from either
+          the user's or the system's shell start up files), the
+          defaults file, and what may be compiled into the program.
+          The highest priority source is the data source used.  The
+          source of the respective control data items can be
+          determined using the option ----WWWWWWWW.
+
+     SSSSEEEEEEEE AAAALLLLSSSSOOOO
+          lp(1)
+
+     WWWWAAAARRRRNNNNIIIINNNNGGGGSSSS
+          If the print queue host is a DEC VAX running the DEC VMS
+          operating system and TGV Multinet, ffffllllppppkkkk does not work, ffffllllppppqqqq
+          only gives the long form output, and for ffffllllpppprrrr, only the ----hhhh,
+          ----llll, ----jjjj, and ----qqqq options are known to work.  By extension,
+          since the ----IIII uses the ----jjjj facilities, it also works with this
+          lpd implementation.  This package was written to be a
+          complete implementation of the BSD lpd/lpr protocol as a
+          result options are available in the package that are not
+          supported on the VAX VMS host.
+
+     VVVVEEEERRRRSSSSIIIIOOOONNNN
+
+
+     PPPPaaaaggggeeee 7777                                           ((((pppprrrriiiinnnntttteeeedddd 2222////8888////99999999))))
+
+
+
+     FFFFLLLLPPPPRRRR((((1111))))               UUUUNNNNIIIIXXXX SSSSyyyysssstttteeeemmmm VVVV ((((FFFFeeeerrrrmmmmiiii))))               FFFFLLLLPPPPRRRR((((1111))))
+
+
+
+          $Id: flpr.man,v 2.1 1999/01/25 19:51:43 root Exp root $
+
+     AAAAUUUUTTTTHHHHOOOORRRR
+          Randolph J. Herber
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     Page 8                                           (printed 2/8/99)
