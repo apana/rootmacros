@@ -41,7 +41,7 @@ void setTDRStyle() {
   tdrStyle->SetFrameFillStyle(0);
   tdrStyle->SetFrameLineColor(1);
   tdrStyle->SetFrameLineStyle(1);
-  tdrStyle->SetFrameLineWidth(1);
+  tdrStyle->SetFrameLineWidth(2);
 
 // For the histo:
   // tdrStyle->SetHistFillColor(1);
@@ -52,9 +52,10 @@ void setTDRStyle() {
   // tdrStyle->SetLegoInnerR(Float_t rad = 0.5);
   // tdrStyle->SetNumberContours(Int_t number = 20);
 
+  //    tdrStyle->SetEndErrorSize(0);
   tdrStyle->SetEndErrorSize(2);
 //  tdrStyle->SetErrorMarker(20);
-  tdrStyle->SetErrorX(0.);
+  //tdrStyle->SetErrorX(0.);
   
   tdrStyle->SetMarkerStyle(20);
 
@@ -88,8 +89,8 @@ void setTDRStyle() {
 // Margins:
   tdrStyle->SetPadTopMargin(0.05);
   tdrStyle->SetPadBottomMargin(0.13);
-  tdrStyle->SetPadLeftMargin(0.16);
-  tdrStyle->SetPadRightMargin(0.02);
+  tdrStyle->SetPadLeftMargin(0.15);
+  tdrStyle->SetPadRightMargin(0.03);
 
 // For the Global title:
 
@@ -151,6 +152,12 @@ void setTDRStyle() {
   // tdrStyle->SetPalette(Int_t ncolors = 0, Int_t* colors = 0);
   // tdrStyle->SetTimeOffset(Double_t toffset);
   // tdrStyle->SetHistMinimumZero(kTRUE);
+
+
+
+// For the text
+
+   tdrStyle->SetTextFont(42);
 
   tdrStyle->cd();
 
