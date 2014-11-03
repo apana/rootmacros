@@ -1,14 +1,16 @@
-from ROOT import gROOT, gStyle, gSystem, TCanvas, TF1, TFile, TH1F
-from ROOT import TColor, TLine, TLegend, TLatex, TObjArray
-from ROOT import SetOwnership
+##from ROOT import gROOT, gStyle, gSystem, TCanvas, TF1, TFile, TH1F
+##from ROOT import TColor, TLine, TLegend, TLatex, TObjArray
+##from ROOT import SetOwnership
+##
+##from ROOT import gDirectory, gPad
 
-from ROOT import gDirectory, gPad
+from ROOT import *
 
 import sys,string,math,os
 
 # import myPyRootSettings
 sys.path.append(os.path.join(os.environ.get("HOME"),'rootmacros'))
-from myPyRootSettings import prepPlot
+from myPyRootMacros import prepPlot
 
 if __name__ == '__main__':
 
@@ -31,18 +33,17 @@ if __name__ == '__main__':
     # ptmin=80; ptmax=100;
     # ptmin=200; ptmax=250;
 
-    # WhichJEC="oldJEC"
-    WhichJEC="newJEC"
 
-    HistFile1="JetRespVsEta_pt" + str(int(ptmin)) + "-" +str(int(ptmax))+"_oldJEC.root"
-    HistFile2="JetRespVsEta_pt" + str(int(ptmin)) + "-" +str(int(ptmax))+"_newJEC.root"
+    HistFile1="results/results_13TEV_40PU_2015_RE-EMUL_RATE_Emu.root"
+    HistFile2="results/results_13TEV_40PU_2015_RE-EMUL_RATE_UCT.root"
 
     f1 = TFile(HistFile1)
     f2 = TFile(HistFile2)
-    # f1.ls()
+    f1.ls()
     # f1.cd("pf")
 
-    hname="Response"
+    # hname="nHTTVsHTT"
+    hname="nTauVsPt"
     hNum = f1.Get(hname)
     hDen = f2.Get(hname)
 
@@ -53,7 +54,7 @@ if __name__ == '__main__':
     Hlist.Add(hRat);
 
     cname="pT"
-    c1 = prepPlot("c1",cname,700,20,500,500)
+    c1 = prepPlot("c1",cname,300,20,500,500)
     c1.SetLogy(1);    
 
     # i1=90; i2=110
@@ -68,8 +69,7 @@ if __name__ == '__main__':
     c2.SetLogy(0);    
 
     min=0.; max=1.24
-    if WhichJets=="ak5CaloJets":
-        min=0.
+
     hRat.SetMaximum(1.24)
     hRat.SetMinimum(0.0)
     hRat.Draw()
@@ -81,3 +81,4 @@ if __name__ == '__main__':
     # f2.Close()
 
 
+    raw_input('\npress return to end the program...')
