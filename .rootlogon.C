@@ -19,7 +19,7 @@
    }
 
 
-   char *myhome=gSystem->Getenv("HOME");
+   const char *myhome=gSystem->Getenv("HOME");
    TString HomeDir = myhome;
    TString MyIncludePath = HomeDir + "/rootmacros";
    // cout << HomeDir << endl;
