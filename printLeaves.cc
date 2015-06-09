@@ -2,7 +2,7 @@
 
 // root -b -q 'printLeaves.cc("xxx.root","HltTree")'
 
-void printLeaves(const TString& rootfile="xxx.root", TString& treename="HltTree"){
+void printLeaves(const TString& rootfile="xxx.root", TString& treename="Events"){
 
   cout << "\n Rootfile: " << rootfile << endl;
   //cout << " Treename: " << treename << endl;
