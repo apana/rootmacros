@@ -184,12 +184,14 @@ def PrepLegend(x1,y1,x2,y2,size=0.038,color=ROOT.kWhite):
     return legend
 
 
-def SetHistColorAndMarker(h,color,marker):
+def SetHistColorAndMarker(h,color,marker=0,size=0):
 
     h.SetLineColor(color)
     if marker>0:
         h.SetMarkerStyle(marker)
         h.SetMarkerColor(color)
+        if size>0:
+            h.SetMarkerSize(size)
         
     return
 
