@@ -184,13 +184,13 @@ def PrepLegend(x1,y1,x2,y2,size=0.038,color=ROOT.kWhite):
     return legend
 
 
-def SetHistColorAndMarker(h,color,marker):
+def SetHistColorAndMarker(h,color,marker=0,size=0.6):
 
     h.SetLineColor(color)
     if marker>0:
         h.SetMarkerStyle(marker)
         h.SetMarkerColor(color)
-        
+        h.SetMarkerSize(size)
     return
 
 def ResetAxisAndLabelSizes(h,lsize=0.055, loff=0.008):
@@ -275,6 +275,6 @@ def ZeroErrorBars(histo):
 
     nbins=histo.GetNbinsX()
     for ibin in range(1,nbins+1):
-        histo.SetBinError(ibin,0.)
+        histo.SetBinError(ibin,0.0001)
 
     return
