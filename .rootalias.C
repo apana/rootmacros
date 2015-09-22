@@ -33,6 +33,11 @@ void loadMyRootFuncs()
    gROOT->ProcessLine(".L ~/rootmacros/rootfuncs.h");
 }
 
+void fp(int i=1)
+{
+   gStyle->SetPalette(i);
+}
+
 void cmsload()
 {
 

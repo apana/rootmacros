@@ -277,6 +277,6 @@ def ZeroErrorBars(histo):
 
     nbins=histo.GetNbinsX()
     for ibin in range(1,nbins+1):
-        histo.SetBinError(ibin,0.)
+        histo.SetBinError(ibin,0.0001)
 
     return

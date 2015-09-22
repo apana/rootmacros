@@ -6,7 +6,6 @@
    myStyle->SetOptTitle(0);
    myStyle->SetOptLogy(0);
    // myStyle->SetOptStat(0);
-   myStyle->SetPalette(1);
 
    myStyle->SetPadTickX(1);
 
@@ -44,5 +43,6 @@
    myStyle->SetHistMinimumZero(); // take out suppressed zero's
 
    // US letter
-   myStyle->SetPaperSize(20, 24);
+   // myStyle->SetPaperSize(20, 24);
+   myStyle->SetPalette(1);
 }
