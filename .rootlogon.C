@@ -22,9 +22,9 @@
    const char *myhome=gSystem->Getenv("HOME");
    TString HomeDir = myhome;
    TString MyIncludePath = HomeDir + "/rootmacros";
-   // cout << HomeDir << endl;
+   cout << HomeDir << endl;
    gROOT->ProcessLine(".include " + MyIncludePath);
 
    // may cause compilation problems
-   cmsload();
+   if (HomeDir != "/Users/apana") cmsload();
 }
