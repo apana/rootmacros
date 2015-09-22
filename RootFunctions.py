@@ -6,6 +6,35 @@
 import sys
 import ROOT
 
+def RateIntegrator(h):
+
+    print h.GetName()
+    hout= h.Clone()
+    hout.SetName(h.GetName()+ "_clone")
+    
+    nbins=h.GetNbinsX()
+    for ibin in range(1,nbins+1):
+        ibin1=ibin+1
+        ibin2=nbins
+
+        cont =h.GetBinContent(ibin+1)
+        err  =h.GetBinError(ibin+1)
+
+        ferr=0.
+        if (cont>0.): ferr=err/cont
+
+        # fint=h.Integral(ibin1,ibin2,"width");
+        fint=h.Integral(ibin1,ibin2,"");
+
+        # print ibin,"  -- Integral: ",fint
+        cont=fint
+        err = ferr*fint
+
+        hout.SetBinContent(ibin+1,cont);
+        hout.SetBinError(ibin+1,err);        
+
+    return hout
+
 def RebinHist(h,theBins,divideByBinWidth=True):
 ##
 ## Rebin histogram with variable width bins 
