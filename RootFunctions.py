@@ -24,11 +24,14 @@ def RateIntegrator(h):
         if (cont>0.): ferr=err/cont
 
         # fint=h.Integral(ibin1,ibin2,"width");
-        fint=h.Integral(ibin1,ibin2,"");
-
+        # fint=h.Integral(ibin1,ibin2,"");
+        errorVal = ROOT.Double(0)
+        fint=h.IntegralAndError(ibin1,ibin2,errorVal);
+        ferr=errorVal
         # print ibin,"  -- Integral: ",fint
         cont=fint
-        err = ferr*fint
+        # err = ferr*fint
+        err = ferr
 
         hout.SetBinContent(ibin+1,cont);
         hout.SetBinError(ibin+1,err);        
@@ -323,11 +326,24 @@ def Proj3D_Z(h,xmin,xmax,ymin,ymax,Debug=False):
 
     return proj_z
 
+def ZeroErrorBars(histo):
+
+    nbins=histo.GetNbinsX()
+    for ibin in range(1,nbins+1):
+        histo.SetBinError(ibin,0.0)
+
+    return
+
 class XSFIT:
    def __call__( self, x, par ):
        value = par[0]/x[0]**(par[1])+par[2]/x[0]**(par[3]);
        return value
 
+class EFFFIT:
+   def __call__( self, x, par ):
+       value=par[0]/2.+par[0]/2.*ROOT.TMath.Erf((x[0]-par[1])/par[2]);
+       return value
+   
 class GFIT:
    def __call__( self, x, par ):
       # value1 = par[0]*math.exp(-0.5 * (x[0] - par[1])**2 / par[2]**2 );

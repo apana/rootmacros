@@ -272,11 +272,3 @@ def drawErrorBarsUser(c,h,i1,i2,offset,minY):
         l.SetX1(cont-err); l.SetX2(cont+err);
         if abs(cont) > minY:
             l.Draw()
-
-def ZeroErrorBars(histo):
-
-    nbins=histo.GetNbinsX()
-    for ibin in range(1,nbins+1):
-        histo.SetBinError(ibin,0.0001)
-
-    return
