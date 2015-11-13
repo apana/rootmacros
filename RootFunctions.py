@@ -154,6 +154,11 @@ def Get1DHist(rootfile,hname,Debug=False):
 
     #  h.SetDirectory(0)  # retain histogram after closing file
     # print h
+    if h==None:
+        print "Looks like a histogram with name: ",hname," does not exist on input file ",rootfile
+        if not Debug:
+            print "Add option debug to Get1DHist to see list of histograms"
+        
     f.Close()
     return h
 
