@@ -6,6 +6,18 @@
 import sys
 import ROOT
 
+def my_range(start, end, step):
+    #
+    # for looping over discreet steps of arbitrary size
+    #  usage:
+    #        for xx in my_range(1, 1.3, 0.01):
+    #
+    #  will set xx to 1,1.01,1.02 ... 1.29 in loop
+    
+    while start <= end:
+        yield start
+        start += step
+
 def RateIntegrator(h):
 
     print h.GetName()
@@ -96,9 +108,9 @@ def GetHist(fileName,histName,whichDir=""):
     Debug=False
     # Debug=True
 
-    if not os.path.exists(fileName):
-        print "Histogram: ",fileName," does not exist"
-        sys.exit(1)
+    #if not os.path.exists(fileName):
+    #    print "Histogram: ",fileName," does not exist"
+    #    sys.exit(1)
 
     f = ROOT.TFile.Open(fileName)
     f.cd()
@@ -143,6 +155,11 @@ def Get1DHist(rootfile,hname,Debug=False):
     ROOT.TH1F.AddDirectory( False )
 
     f = ROOT.TFile.Open(rootfile)
+    if f==None:
+        print "TFile.Open returned empty pointer \n\t", rootfile," probably doesn\'t exist"
+        print "Exiting macro\n"
+        sys.exit(1)
+        
     f.cd()
 
     if Debug:
@@ -171,6 +188,11 @@ def Get2DHist(rootfile,hname,Debug=False):
     print "Histogram: ",hname
     
     f = ROOT.TFile.Open(rootfile)
+    if f==None:
+        print "TFile.Open returned empty pointer \n\t", rootfile," probably doesn\'t exist"
+        print "Exiting macro\n"
+        sys.exit(1)
+        
     f.cd()
 
     if Debug:
@@ -191,6 +213,11 @@ def Get3DHist(rootfile,hname):
     ROOT.TH3F.AddDirectory( False )
 
     f = ROOT.TFile.Open(rootfile)
+    if f==None:
+        print "TFile.Open returned empty pointer \n\t", rootfile," probably doesn\'t exist"
+        print "Exiting macro\n"
+        sys.exit(1)
+        
     f.cd()
 
     h=ROOT.TH3F()
