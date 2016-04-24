@@ -203,6 +203,10 @@ def Get2DHist(rootfile,hname,Debug=False):
     if hExist(f,hname):
         h=f.Get(hname)
 
+    if h==None:
+        print "Looks like a histogram with name: ",hname," does not exist on input file ",rootfile
+        if not Debug:
+            print "Add option debug to Get1DHist to see list of histograms"
 
     # h.SetDirectory(0)  # retain histogram after closing file
     # print h
@@ -223,6 +227,11 @@ def Get3DHist(rootfile,hname):
     h=ROOT.TH3F()
     if hExist(f,hname):
         h=f.Get(hname)
+
+    if h==None:
+        print "Looks like a histogram with name: ",hname," does not exist on input file ",rootfile
+        if not Debug:
+            print "Add option debug to Get1DHist to see list of histograms"
 
     # h.SetDirectory(0)  # retain histogram after closing file
     # print h

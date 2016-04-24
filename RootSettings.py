@@ -261,7 +261,7 @@ def drawErrorBars(c,h,offset):
 
     for ibin in range(1,nbins+1):
 
-        l=TLine()
+        l=ROOT.TLine()
         l.SetLineWidth(2)
         ROOT.SetOwnership( l, 0 )
         
@@ -291,7 +291,7 @@ def drawErrorBarsUser(c,h,i1,i2,offset,minY):
 
     for ibin in range(i1,i2+1):
 
-        l=TLine()
+        l=ROOT.TLine()
         l.SetLineWidth(2)
         ROOT.SetOwnership( l, 0 )
         
