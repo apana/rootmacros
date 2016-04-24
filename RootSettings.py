@@ -217,8 +217,40 @@ def DrawText(xtxt,ytxt,theText,txtsize=0.05,textAlign=11):
 
     return
 
-def drawErrorBars(c,h,offset):
+def set_palette(name="mypalette", ncontours=999):
+    """Set a color palette from a given RGB list
+    stops, red, green and blue should all be lists of the same length
+    see set_decent_colors for an example"""
+
+    if name == "gray" or name == "grayscale":
+        stops = [0.00, 0.34, 0.61, 0.84, 1.00]
+        red   = [1.00, 0.84, 0.61, 0.34, 0.00]
+        green = [1.00, 0.84, 0.61, 0.34, 0.00]
+        blue  = [1.00, 0.84, 0.61, 0.34, 0.00]
+    # elif name == "whatever":
+        # (define more palettes)
+    else:
+        # default palette, looks cool
+        stops = [0.00, 0.34, 0.61, 0.84, 1.00]
+        red   = [0.00, 0.00, 0.87, 1.00, 0.51]
+        green = [0.00, 0.81, 1.00, 0.20, 0.00]
+        blue  = [0.51, 1.00, 0.12, 0.00, 0.00]
+
+    s = array('d', stops)
+    r = array('d', red)
+    g = array('d', green)
+    b = array('d', blue)
+
+    ##  to use add something along the lines:
+    ##
+    ##  npoints = len(s)
+    ##  TColor.CreateGradientColorTable(npoints, s, r, g, b, ncontours)
+    ##  gStyle.SetNumberContours(ncontours)
+
+    return
     
+def drawErrorBars(c,h,offset):
+    from ROOT import TLine
     c.cd()
     nbins=h.GetNbinsX()
 
@@ -244,7 +276,7 @@ def drawErrorBars(c,h,offset):
 
 
 def drawErrorBarsUser(c,h,i1,i2,offset,minY):
-
+    from ROOT import TLine
     c.cd()
     nbins=h.GetNbinsX()
 

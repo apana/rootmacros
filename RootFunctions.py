@@ -223,7 +223,7 @@ def DivideHistograms(hNum,hDen,c1=1.,c2=1.,WhichErrors="",newName=""):
     return hRat
 
 
-def Proj2D_Y(h,xmin,xmax,Debug=False):
+def Proj2D_Y(h,xmin,xmax,hname="XXX",Debug=False):
 
     # project 2D histogram into 1D along Y
 
@@ -246,8 +246,10 @@ def Proj2D_Y(h,xmin,xmax,Debug=False):
         print imin,xmin
         print imax,xmax
 
-    orgname=h.GetName()
-    hname=orgname +"__projY_" + str(xmin) + "-" + str(xmax)
+    if hname == "XXX":
+        orgname=h.GetName()        
+        hname=orgname +"__projY_" + str(xmin) + "-" + str(xmax)
+    
     ## hname="projY_" + str(xmin) + "-" + str(xmax)
     proj_y=h.ProjectionY(hname, imin, imax)
     ROOT.SetOwnership(proj_y,True)
@@ -262,7 +264,7 @@ def Proj2D_Y(h,xmin,xmax,Debug=False):
     return proj_y
 
 
-def Proj2D_X(h,ymin,ymax,Debug=False):
+def Proj2D_X(h,ymin,ymax,hname="XXX",Debug=False):
 
     # project 2D histogram into 1D along Y
 
@@ -280,8 +282,10 @@ def Proj2D_X(h,ymin,ymax,Debug=False):
         print imin,ymin
         print imax,ymax
 
-    orgname=h.GetName()
-    hname=orgname +"__projX_" + str(ymin) + "-" + str(ymax)
+    if hname == "XXX":
+        orgname=h.GetName()        
+        hname=orgname +"__projX_" + str(ymin) + "-" + str(ymax)
+
     proj_x=h.ProjectionX(hname, imin, imax)
     ROOT.SetOwnership(proj_x,True)
 
